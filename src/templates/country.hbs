@@ -1,0 +1,15 @@
+<h2 class="title">{{name}}</h2>
+<div class="thumb">
+    <ul class="list info">
+        <li class="info-item"><span class="text">Capital: </span> {{capital}}</li>
+        <li class="info-item"><span class="text">Population: </span>{{population}}</li>
+        <li class="info-item"><span class="text">Languages: </span>
+            <ul class="languages">
+                {{#each languages}}
+                <li class="languages-item">{{this.name}}</li>
+                {{/each}}
+            </ul>
+        </li>
+    </ul>
+    <div class='img-thumb'> <img src="{{flag}}" alt="Flag of {{name}}"></div>
+</div>

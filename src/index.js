@@ -1,7 +1,7 @@
 import './styles.css';
 import refs from './js/refs';
 import fetchCountries from './js/fetchCountries';
-import updateListMarkup from './js/updateMarkup';
+import markup from './js/markup';
 import errorMsg from './js/error';
 import country from './templates/country.hbs';
 import debounce from 'lodash.debounce';
@@ -11,14 +11,14 @@ refs.countryInpup.addEventListener(
   debounce(() => {
     fetchCountries(refs.countryInpup.value).then(data => {
       if (data && data.length === 1) {
-        refs.result.innerHTML = '';
-        refs.card.innerHTML = country(data[0]);
+        markup.updateResultMarkup('');
+        markup.updateCardMarkup(country(data[0]));
       } else if (data && data.length > 1 && data.length <= 10) {
-        refs.card.innerHTML = '';
-        updateListMarkup(data);
+        markup.updateCardMarkup('');
+        markup.updateListMarkup(data);
       } else if (data && data.length > 10) {
-        refs.card.innerHTML = '';
-        refs.result.innerHTML = '';
+        markup.updateCardMarkup('');
+        markup.updateResultMarkup('');
         errorMsg();
       }
     });
